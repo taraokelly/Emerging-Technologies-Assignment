@@ -5,7 +5,7 @@
 ## Introduction
 
 As apparent by its presence in the latest Gartner Hype Cycle for Emerging Technologies (currently 2017), **Machine Learning**, and its ongoing research, is receiving a lot of attention right now. The name machine learning, in my opinion, is quite self-explanitory. Machine learning focuses on enabling machines to learn from data. Subsequently, facilitating the machine to make decisions and predictions based on that data. 
-The following project has been assigned by lecturer [Ian McLoughlin](https://ianmcloughlin.github.io/) to assist the learning of the module [Emerging Technologies](https://emerging-technologies.github.io). It is a basic implementation of supervised machine learning, trained using the MNIST data set. The UI will be actualized in the form of just a simple single web page.
+The following project has been assigned by lecturer [Ian McLoughlin](https://ianmcloughlin.github.io/) to assist the learning of the module [Emerging Technologies](https://emerging-technologies.github.io). It is a basic implementation of supervised machine learning, trained using the MNIST data set. For the sake of simplicity, the UI will be actualized in the form of a simple single web page.
 
 ## Project Spec
 
