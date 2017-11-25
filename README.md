@@ -1,12 +1,12 @@
 # Emerging-Technologies-Assignment
 
-**An application to recognize handwritten digits written in Python using Flask and Tensorflow. Forth Year, Emerging Technologies, Software Development.**
+*An application to recognize handwritten digits written in Python using Flask and Tensorflow. Forth Year, Emerging Technologies, Software Development.*
+
+## Project Spec
 
 The following are your instructions to complete the project for the module [Emerging Technologies](https://emerging-technologies.github.io) for 2017.
 This project is worth [40% of your marks for the module](https://emerging-technologies.github.io/#assessment-information).
 Please see the [course homepage for the deadline](https://emerging-technologies.github.io/#submit-ca).
-
-## Project Spec
 
 ### Overview
 In this project you will create a web application in Python to recognise digits in images.
