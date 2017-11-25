@@ -4,6 +4,9 @@
 
 ## Introduction
 
+As apparent by its presence in the latest Gartner Hype Cycle for Emerging Technologies (currently 2017), **Machine Learning**, and its ongoing research, is receiving a lot of attention right now. The name machine learning, in my opinion, is quite self-explanitory. Machine learning focuses on enabling machines to learn from data. Subsequently, facilitating the machine to make decisions and predictions based on that data. 
+The following project has been assigned by lecturer [Ian McLoughlin](https://ianmcloughlin.github.io/) to assist the learning of the module [Emerging Technologies](https://emerging-technologies.github.io). It is a basic implementation of supervised machine learning, trained using the MNIST data set. The UI will be actualized in the form of just a simple single web page.
+
 ## Project Spec
 
 The following are your instructions to complete the project for the module [Emerging Technologies](https://emerging-technologies.github.io) for 2017.
@@ -38,11 +41,13 @@ Your project will be graded using the following rubric.
 | Consistency   | Planning and pragmatism                | | | | | |
 | Documentation | Descriptions and explanations          | | | | | |
 
-## Implementing Project
+## Implemention
 
 ## User Guide
 
-**References:**
+## References
+
+[Gartner Hype Cycle](https://www.gartner.com/smarterwithgartner/top-trends-in-the-gartner-hype-cycle-for-emerging-technologies-2017/)
 
 [Bootstrap](http://getbootstrap.com/)
 
