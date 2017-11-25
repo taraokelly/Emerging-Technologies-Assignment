@@ -2,6 +2,8 @@
 
 *An application to recognize handwritten digits written in Python using Flask and Tensorflow. Forth Year, Emerging Technologies, Software Development.*
 
+## Introduction
+
 ## Project Spec
 
 The following are your instructions to complete the project for the module [Emerging Technologies](https://emerging-technologies.github.io) for 2017.
@@ -35,6 +37,10 @@ Your project will be graded using the following rubric.
 | Development   | Architecture and code                  | | | | | |
 | Consistency   | Planning and pragmatism                | | | | | |
 | Documentation | Descriptions and explanations          | | | | | |
+
+## Implementing Project
+
+## User Guide
 
 **References:**
 
