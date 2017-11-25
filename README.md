@@ -2,10 +2,22 @@
 
 *An application to recognize handwritten digits written in Python using Flask and Tensorflow. Forth Year, Emerging Technologies, Software Development.*
 
+## Table of Contents
+
+## Table of Contents
+
++ [Introduction](#introduction)
++ [Project Spec](#project-spec)
++ [Technologies](#technologies)
++ [Implemention](#implemention)
++ [User Guide](#user-guide)
++ [Conclusion](#conclusion)
++ [References](#references)
+
 ## Introduction
 
 As apparent by its presence in the latest Gartner Hype Cycle for Emerging Technologies (currently 2017), **Machine Learning**, and its ongoing research, is receiving a lot of attention right now. The name machine learning, in my opinion, is quite self-explanitory. Machine learning focuses on enabling machines to learn from data. Subsequently, facilitating the machine to make decisions and predictions based on that data. 
-The following project has been assigned by lecturer [Ian McLoughlin](https://ianmcloughlin.github.io/) to assist the learning of the module [Emerging Technologies](https://emerging-technologies.github.io). It is a basic implementation of supervised machine learning, trained using the MNIST data set. For the sake of simplicity, the UI will be actualized in the form of a simple single web page.
+The following project has been assigned by lecturer [Ian McLoughlin](https://ianmcloughlin.github.io/) to assist the learning of the module [Emerging Technologies](https://emerging-technologies.github.io). It is a basic implementation of supervised machine learning, trained using the [MNIST](http://yann.lecun.com/exdb/mnist/) data sets of images and corresponding labels. For the sake of simplicity, the UI will be actualized in the form of a simple single web page.
 
 ## Project Spec
 
@@ -41,11 +53,17 @@ Your project will be graded using the following rubric.
 | Consistency   | Planning and pragmatism                | | | | | |
 | Documentation | Descriptions and explanations          | | | | | |
 
+## Technologies
+
 ## Implemention
 
 ## User Guide
 
+## Conclusion
+
 ## References
+
+[MNIST](http://yann.lecun.com/exdb/mnist/)
 
 [Gartner Hype Cycle](https://www.gartner.com/smarterwithgartner/top-trends-in-the-gartner-hype-cycle-for-emerging-technologies-2017/)
 
