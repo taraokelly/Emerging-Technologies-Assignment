@@ -2,17 +2,25 @@ import os
 from flask import Flask, request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
 
+# Specify uploads directory.
 UPLOAD_FOLDER = './uploads'
 
-# We only want to allow images to be uploaded
+# We only want to allow images to be uploaded  - so only allowing files with the following extensions.
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
+# Start and configure application.
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+# root directory
 @app.route("/")
 def root():
     return app.send_static_file('index.html')
+
+# this url will be removed
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],filename)
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
@@ -33,10 +41,6 @@ def upload_file():
             return redirect(url_for('uploaded_file',
                                     filename=filename))
     return "file uploaded"
-
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],filename)
 
 def allowed_file(filename):
     return '.' in filename and \
