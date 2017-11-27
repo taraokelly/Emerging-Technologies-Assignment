@@ -91,7 +91,7 @@ body {margin:0;}
 }
 #extra_content.open { width: 250px; }
 #main_content { transition: margin-left .5s;}
-#main_content #main_content_body{ padding:100px 5% 0 5%;}
+#main_content #main_content_body{ padding:100px 5% 0 5%;min-width: 1000px;}
 #main_content.open { margin-left: 250px; }
 .newline { clear: both; }
 body button, body input
@@ -123,10 +123,12 @@ canvas#paint { border: 1px solid #aaa;}
     background-color: #faa53d;
 }
 .uploaders_container {width:40%; border-right: 1px solid #aaa;min-width:400px;}
-.results_container {width:60%;}
+.results_container {width:59%;}
+.results_container img {border: 1px solid #aaa;display:block;/*margin: 0 auto;*/margin-left: 10%;height:375px;width:375px;}
 .uploaders_container button:nth-child(1) , .uploader_containers input:nth-child(1) 
 {
     background-color: #ff9505;
 }
 .spacer{clear: both; height: 10px;}
 h2 {color:#333; margin-top:0;}
+#res_image{margin-top:15px; }

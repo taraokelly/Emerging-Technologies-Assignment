@@ -38,13 +38,14 @@
           <button id="reset" onclick="reset()">Clear</button>
           <button id="upload" class="upload" onclick="upload()">Upload</button>
           <div style="clear: both"></div>
-          <canvas id="paint" width="375" height="275">Update your browser to support HTML5 Canvas</canvas>
+          <canvas id="paint" width="375" height="375">Update your browser to support HTML5 Canvas</canvas>
           <div class="spacer"></div>
         </div>
 
         
 
-        <div class="results_container left">
+        <div class="results_container right">
+                <img id="res_image" src="static/img/placeholder.png"/>
         </div>
       </div>
     </div>
@@ -55,12 +56,14 @@
     // Get canvas.
     var canvas = document.getElementById("paint");
     var ctx = canvas.getContext("2d");
+    // Configure canvas.
+    ctx.fillStyle = "black";
     var width = canvas.width, height = canvas.height;
+    ctx.fillRect(0, 0, width, height);
+    ctx.strokeStyle="#fff";
     var hold = false;
-
     // Pencil tool.
     // Adapted from: https://nidhinp.wordpress.com/2014/02/19/paint-app-in-flask/      
-
     // On mouse clicked get co-ordinates, get hold and begin path.
     canvas.onmousedown = function (e){
         curX = e.clientX - canvas.offsetLeft;
@@ -72,7 +75,6 @@
         ctx.beginPath();
         ctx.moveTo(prevX, prevY);
     };
-
     // Get co-ordinates and draw if hold is still true.    
     canvas.onmousemove = function (e){
         if(hold){
@@ -81,51 +83,36 @@
             draw();
         }
     };
-
     // Release hold on mouse button is released.    
     canvas.onmouseup = function (e){
         hold = false;
     };
-
     // Release hold on mouse out of canvas.   
     canvas.onmouseout = function (e){
         hold = false;
     };
-
     // Draw line   
     function draw (){
         ctx.lineTo(curX, curY);
         ctx.stroke();
     }
-
     // Reset tool.
     // Adapted from: https://stackoverflow.com/questions/2142535/how-to-clear-the-canvas-for-redrawing
     function reset(){
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
-
-    function openNav() {
-        document.getElementById("extra_content").style.width = "250px";
-        document.getElementById("main_content").style.marginLeft = "250px";
+    function upload(){
+        // https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
+        // Returns a png epresentation of the image.
+        var img = canvas.toDataURL("image/png");
+        // append result image src attribute to the uploaded image
+        $("#res_image").attr("src",img);
     }
-
-    function closeNav() {
-        document.getElementById("extra_content").style.width = "0";
-        document.getElementById("main_content").style.marginLeft= "0";
-    }
-    function update(){
-        // here is the most important part because if you dont replace you will get a DOM 18 exception.
-        var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); 
-        // it will save locally
-        window.location.href=image; 
-    }
-
     $(document).ready(function(){
       $('#nav-icon').click(function(){
         $('#nav-icon,.side_nav,#main_content').toggleClass('open');
       });
     });
-
     /*new ResizeSensor(jQuery('#main_content_body'), function(){ 
       console.log('content dimension changed');
       $('.navbar').width('#main_content_body');
