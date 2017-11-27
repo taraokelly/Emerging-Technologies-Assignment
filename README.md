@@ -55,7 +55,7 @@ Your project will be graded using the following rubric.
 
 ### Python
 
-Python is a simple yet powerful programming language. It offers programmers the rare ability to focus mainly on the solution, and less on adhering to a strict syntax. Python's extensive libraries allows for this lightweight web application, and it's handling of machine learning. I used [Python](https://www.python.org/) 3 and the flask framework for the server-side scripting. I used the @app.route decorator to map the URL to functions in my flask application. 
+Python is a simple yet powerful programming language. It offers programmers the rare ability to focus mainly on the solution, and less on adhering to a strict syntax. This lightweight web application and it's handling of machine learning is attributed to Python's extensive libraries. I used [Python](https://www.python.org/) 3 and the flask framework for the server-side scripting. I used the @app.route decorator to map the URL to functions in my flask application. 
 
 ## Implemention
 

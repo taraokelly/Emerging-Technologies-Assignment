@@ -12,7 +12,8 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# root directory
+# Routing: @app.route is a decorator used to match URLs to view functions in Flask apps.
+# Root web address - and only web address in this case
 @app.route("/")
 def root():
     return app.send_static_file('index.html')

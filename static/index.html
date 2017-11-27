@@ -30,8 +30,10 @@
               <p><input type=file name=file>
                 <input  class="upload" type=submit value=Upload>
           </form> -->
-          <input type="file" id="input_file">
-          <button class="upload" onclick="upload_file()">Upload</button>
+          <form id="upload-file" method="post" enctype="multipart/form-data"></form>
+            <input type="file" id="input_file">
+            <button class="upload" onclick="upload_file()">Upload</button>
+          </form>
           <div class="spacer"></div>
           <h2>... or draw one:</h2>
           <button id="reset" onclick="reset()">Clear</button>
@@ -39,15 +41,12 @@
           <div style="clear: both"></div>
           <canvas id="paint" width="375" height="375">Update your browser to support HTML5 Canvas</canvas>
           <canvas id='blank'  width="375" height="375" style='display:none'></canvas>
-          <div class="spacer"></div>
         </div>
         <div class="results_container right">
             <img id="res_image" src="static/img/placeholder.png"/>
         </div>
       </div>
     </div>
-    <script src="static/js/css-element-queries/src/ResizeSensor.js"></script>
-    <script src="static/js/css-element-queries/src/ElementQueries.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
     var reader  = new FileReader();
@@ -145,10 +144,6 @@
     reader.addEventListener("load", function () {
             $("#res_image").attr("src",reader.result);
         }, false);
-    /*new ResizeSensor(jQuery('#main_content_body'), function(){ 
-      console.log('content dimension changed');
-      $('.navbar').width('#main_content_body');
-    });*/
     </script>
 </body>
 </html>
