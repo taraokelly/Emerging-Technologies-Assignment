@@ -1,15 +1,12 @@
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
   <title>Emerging Technogies Assignment</title>
   <meta name="description" content="An application for handwritten digit recognition.">
   <meta name="author" content="Tara O'Kelly">
   <meta name="student_number" content="Tara O'Kelly">
   <link rel="stylesheet" href="static/css/style.css" /> 
-
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
@@ -29,23 +26,23 @@
       <div id="main_content_body">
         <div class="uploaders_container left">
           <h2>Upload a file for analysis:</h2>
-          <form method=post enctype=multipart/form-data>
+          <!-- <form method=post enctype=multipart/form-data>
               <p><input type=file name=file>
                 <input  class="upload" type=submit value=Upload>
-          </form>
+          </form> -->
+          <input type="file" id="input_file">
+          <button class="upload" onclick="upload_file()">Upload</button>
           <div class="spacer"></div>
           <h2>... or draw one:</h2>
           <button id="reset" onclick="reset()">Clear</button>
-          <button id="upload" class="upload" onclick="upload()">Upload</button>
+          <button id="upload" class="upload" onclick="upload_drawing()">Upload</button>
           <div style="clear: both"></div>
           <canvas id="paint" width="375" height="375">Update your browser to support HTML5 Canvas</canvas>
+          <canvas id='blank'  width="375" height="375" style='display:none'></canvas>
           <div class="spacer"></div>
         </div>
-
-        
-
         <div class="results_container right">
-                <img id="res_image" src="static/img/placeholder.png"/>
+            <img id="res_image" src="static/img/placeholder.png"/>
         </div>
       </div>
     </div>
@@ -53,23 +50,30 @@
     <script src="static/js/css-element-queries/src/ElementQueries.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
+    var reader  = new FileReader();
     // Get canvas.
     var canvas = document.getElementById("paint");
     var ctx = canvas.getContext("2d");
     // Configure canvas.
-    ctx.fillStyle = "black";
     var width = canvas.width, height = canvas.height;
+    ctx.fillStyle = "black";
     ctx.fillRect(0, 0, width, height);
+    ctx.lineWidth=4;
     ctx.strokeStyle="#fff";
     var hold = false;
-    // Pencil tool.
-    // Adapted from: https://nidhinp.wordpress.com/2014/02/19/paint-app-in-flask/      
+    // Get the hidden blank canvas for comparison. Adapted from: http://jsfiddle.net/amaan/rX572/
+    var blank_canvas = document.getElementById("blank");
+    var b_ctx = blank_canvas.getContext("2d");
+    // Configure blank canvas.
+    b_ctx.fillStyle = "black";
+    b_ctx.fillRect(0, 0, blank_canvas.width, blank_canvas.height);
+    // ----- Canvas Handlers -----
+    // Pencil tool. Adapted from: https://nidhinp.wordpress.com/2014/02/19/paint-app-in-flask/      
     // On mouse clicked get co-ordinates, get hold and begin path.
     canvas.onmousedown = function (e){
         curX = e.clientX - canvas.offsetLeft;
         curY = e.clientY - canvas.offsetTop;
-        hold = true;
-              
+        hold = true;  
         prevX = curX;
         prevY = curY;
         ctx.beginPath();
@@ -96,28 +100,55 @@
         ctx.lineTo(curX, curY);
         ctx.stroke();
     }
-    // Reset tool.
-    // Adapted from: https://stackoverflow.com/questions/2142535/how-to-clear-the-canvas-for-redrawing
+    // Reset tool. Adapted from: https://stackoverflow.com/questions/2142535/how-to-clear-the-canvas-for-redrawing
     function reset(){
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillRect(0, 0, width, height);
     }
-    function upload(){
+    // ----- Uploader Functions -----
+    function upload_file(){
+        // Adapted from: https://stackoverflow.com/questions/651700/how-to-have-jquery-restrict-file-types-on-upload
+        var file_name = $('#input_file');
+        var ext = file_name.val().split('.').pop().toLowerCase();
+        if ($(file_name).get(0).files.length === 0) {
+            alert("No files selected.");
+            return;
+        }
+        else if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+            alert('Must be .jpg, .png or .gif format.');
+            return;
+        }
+        alert('Going to send to server.');
+        //https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
+        var file = document.querySelector('input[type=file]').files[0];
+        reader.readAsDataURL(file);
+    }
+    function upload_drawing(){
+        if(blank_canvas.toDataURL() == canvas.toDataURL()){
+            alert('Please draw digit before uploading.');
+            return;
+        }
+        alert('Going to send to server.');
         // https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
-        // Returns a png epresentation of the image.
+        // https://stackoverflow.com/questions/10673122/how-to-save-canvas-as-an-image-with-canvas-todataurl
+        // Returns a png representation of the image.
         var img = canvas.toDataURL("image/png");
         // append result image src attribute to the uploaded image
         $("#res_image").attr("src",img);
     }
+    // ----- Event Listeners -----
     $(document).ready(function(){
       $('#nav-icon').click(function(){
         $('#nav-icon,.side_nav,#main_content').toggleClass('open');
       });
     });
+    reader.addEventListener("load", function () {
+            $("#res_image").attr("src",reader.result);
+        }, false);
     /*new ResizeSensor(jQuery('#main_content_body'), function(){ 
       console.log('content dimension changed');
       $('.navbar').width('#main_content_body');
     });*/
-    
     </script>
 </body>
 </html>
