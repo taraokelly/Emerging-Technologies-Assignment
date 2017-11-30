@@ -1,14 +1,8 @@
 from flask import Flask, request, redirect, url_for, send_from_directory,jsonify
-from werkzeug.utils import secure_filename
-import base64
-from base64 import decodestring
-import re
+from base64 import decodebytes
 
 # Specify uploads directory.
 UPLOAD_FOLDER = './uploads'
-
-# We only want to allow images to be uploaded  - so only allowing files with the following extensions.
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 # Start and configure application.
 app = Flask(__name__)
@@ -20,6 +14,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def root():
     return app.send_static_file('index.html')
 
+# GET/POST methods
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
@@ -34,16 +29,12 @@ def upload():
 
         # Save image.
         with open('uploads/'+'imageFileName.png', "wb") as fh:
-            fh.write(base64.decodebytes(data))
+            fh.write(decodebytes(data))
     #return "image received"
     return jsonify(
         digit="5",
         error=""
     )
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 if __name__ == "__main__":
     app.run()
