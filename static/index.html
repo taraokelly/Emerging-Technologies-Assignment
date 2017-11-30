@@ -26,24 +26,26 @@
             </div>
       </div>
       <div id="main_content_body">
-        <div class="uploaders_container left">
-          <h2>Upload a file for analysis:</h2>
-          <form id="upload-file" method="post" enctype="multipart/form-data"></form>
-            <input type="file" id="input_file">
-            <button class="upload" onclick="upload_file()">Upload</button>
-          </form>
-          <div class="spacer"></div>
-          <h2>... or draw one:</h2>
-          <button id="reset" onclick="reset_canvas()">Clear</button>
-          <button id="upload" class="upload" onclick="upload_drawing()">Upload</button>
-          <div style="clear: both"></div>
-          <canvas id="paint" width="375" height="375">Update your browser to support HTML5 Canvas</canvas>
-          <canvas id='blank'  width="375" height="375" style='display:none'></canvas>
+        <div class="containers_wrapper">
+          <div class="uploaders_container left">
+            <h2>Upload a file for analysis:</h2>
+            <form id="upload-file" method="post" enctype="multipart/form-data"></form>
+              <input type="file" id="input_file">
+              <button class="upload" onclick="upload_file()">Upload</button>
+            </form>
+            <div class="spacer"></div>
+            <h2>... or draw one:</h2>
+            <button id="reset" onclick="reset_canvas()">Clear</button>
+            <button id="upload" class="upload" onclick="upload_drawing()">Upload</button>
+            <div style="clear: both"></div>
+            <canvas id="paint" width="375" height="375">Update your browser to support HTML5 Canvas</canvas>
+            <canvas id='blank'  width="375" height="375" style='display:none'></canvas>
+          </div>
+          <div class="results_container right">
+              <img id="res_image" src="static/lib/img/placeholder.png"/>
+          </div>
+          <div class="spacer"></div><div class="spacer"></div>
         </div>
-        <div class="results_container right">
-            <img id="res_image" src="static/lib/img/placeholder.png"/>
-        </div>
-        <div class="spacer"></div><div class="spacer"></div>
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

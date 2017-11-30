@@ -1,6 +1,4 @@
-import os
-import flask
-from flask import Flask, request, redirect, url_for, send_from_directory
+from flask import Flask, request, redirect, url_for, send_from_directory,jsonify
 from werkzeug.utils import secure_filename
 import base64
 from base64 import decodestring
@@ -13,7 +11,7 @@ UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 # Start and configure application.
-app = flask.Flask(__name__)
+app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Routing: @app.route is a decorator used to match URLs to view functions in Flask apps.
@@ -21,32 +19,6 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route("/")
 def root():
     return app.send_static_file('index.html')
-
-# this url will be removed
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],filename)
-
-@app.route('/', methods=['GET', 'POST'])
-def upload_file():
-    if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        # if user does not select file, browser also
-        # submit a empty part without filename
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            #return redirect(url_for('uploaded_file',
-            #                       filename=filename))
-            return redirect(request.url)
-    return redirect(request.url)
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
@@ -63,7 +35,11 @@ def upload():
         # Save image.
         with open('uploads/'+'imageFileName.png', "wb") as fh:
             fh.write(base64.decodebytes(data))
-    return "image received"
+    #return "image received"
+    return jsonify(
+        digit="5",
+        error=""
+    )
 
 def allowed_file(filename):
     return '.' in filename and \
