@@ -8,7 +8,7 @@
   <meta name="description" content="An application for handwritten digit recognition.">
   <meta name="author" content="Tara O'Kelly">
   <meta name="student_number" content="Tara O'Kelly">
-  <link rel="stylesheet" href="static/css/style.css" /> 
+  <link rel="stylesheet" href="static/lib/css/style.css" /> 
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
@@ -34,18 +34,19 @@
           </form>
           <div class="spacer"></div>
           <h2>... or draw one:</h2>
-          <button id="reset" onclick="reset()">Clear</button>
+          <button id="reset" onclick="reset_canvas()">Clear</button>
           <button id="upload" class="upload" onclick="upload_drawing()">Upload</button>
           <div style="clear: both"></div>
           <canvas id="paint" width="375" height="375">Update your browser to support HTML5 Canvas</canvas>
           <canvas id='blank'  width="375" height="375" style='display:none'></canvas>
         </div>
         <div class="results_container right">
-            <img id="res_image" src="static/img/placeholder.png"/>
+            <img id="res_image" src="static/lib/img/placeholder.png"/>
         </div>
+        <div class="spacer"></div><div class="spacer"></div>
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript" src="static/js/script.js"></script>
+    <script type="text/javascript" src="static/lib/js/script.js"></script>
 </body>
 </html>

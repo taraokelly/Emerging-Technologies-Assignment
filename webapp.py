@@ -2,6 +2,9 @@ import os
 import flask
 from flask import Flask, request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
+import base64
+from base64 import decodestring
+import re
 
 # Specify uploads directory.
 UPLOAD_FOLDER = './uploads'
@@ -49,7 +52,18 @@ def upload_file():
 def upload():
     if request.method == 'POST':
         image = request.values["image"]
-    return redirect(request.url)
+        print(image)
+        # Adapted from: https://stackoverflow.com/questions/35896868/how-to-get-string-after-last-comma-in-a-field
+        # Set data to everything after the comma, removing the additional data like "data:image/png;base64".
+        data = image.rsplit(',', 1)[1]
+        # Adapted from: https://www.mkyong.com/python/python-3-convert-string-to-bytes/
+        # Encode string to byte array.
+        data = str.encode(data)
+
+        # Save image.
+        with open('uploads/'+'imageFileName.png', "wb") as fh:
+            fh.write(base64.decodebytes(data))
+    return "image received"
 
 def allowed_file(filename):
     return '.' in filename and \
