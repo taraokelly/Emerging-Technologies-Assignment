@@ -49,7 +49,7 @@ def setup(x):
 
 def create(FILEPATH):
     mnist = input_data.read_data_sets('MNIST_data', one_hot=True)
-    sess = tf.Session()
+    
     x = tf.placeholder(tf.float32, shape=[None, 784])
     y_ = tf.placeholder(tf.float32, shape=[None, 10])
 
@@ -77,4 +77,3 @@ def create(FILEPATH):
         print('test accuracy %g' % accuracy.eval(feed_dict={
             x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0}))
         saver.save(sess, FILEPATH)
-    #return x,y_,y_conv, keep_prob, variables

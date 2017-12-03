@@ -97,14 +97,19 @@ function upload_drawing(){
     reset_canvas();
 }
 function upload(img){
+    $("#feedback_label").css("display","none");
+    $("#result").css("display","none");
     data = { image: img }
     $.ajax({
         url: '/model',
         data: data,
-        type: 'GET',
+        type: 'POST',
         success: function(response) {
             //var prediction = response.digit.replace(/[\[\]']+/g,'')
-            alert(response.digit.replace(/[\[\]']+/g,''));
+            //alert(response.digit.replace(/[\[\]']+/g,''));
+            $("#result").text(response.digit.replace(/[\[\]']+/g,''));
+            $("#feedback_label").css("display","block");
+            $("#result").css("display","block");
         },
         error: function(error) {
             alert('Uh oh, looks like something went wrong!');

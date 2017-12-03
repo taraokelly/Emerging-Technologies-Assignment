@@ -46,19 +46,13 @@ def model():
     if request.method == 'POST':
         image = request.values["image"]
         prepared_image = prepare(image)
-        prediction,accuracy = "",""
-        # do stuff
-        print('train with input')
-    else:
-        image = request.values["image"]
-        prepared_image = prepare(image)
-        prediction,accuracy = "",""
+        prediction,score = "",""
         # make prediction on array and make serializable for JSON
         prediction = pandas.Series(predict(prepared_image)).to_json(orient='values')
-    return jsonify(
-        accuracy = accuracy,
-        digit = prediction,
-    )
+        return jsonify(
+            accuracy = score,
+            digit = prediction,
+        )
 
 def prepare(image):
     # https://www.reddit.com/r/learnpython/comments/6lqsrp/converting_a_dataurl_to_numpy_array/
@@ -81,9 +75,6 @@ def prepare(image):
 
 def predict(input):
     return sess.run(tf.argmax(y_conv, 1), feed_dict={x: [input], keep_prob: 1.0})
-
-def train(input):
-    return ""
 
 if __name__ == "__main__":
     app.run()
