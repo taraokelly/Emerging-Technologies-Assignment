@@ -1,3 +1,10 @@
+# Custom
+MNIST_data/
+rough_work/*.index
+rough_work/*.data-00000-of-00001
+rough_work/*.meta
+rough_work/model/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
