@@ -7,9 +7,6 @@
 + [Introduction](#introduction)
 + [Project Specification](#project-specification)
 + [Technologies](#technologies)
-+ [Implemention](#implemention)
-+ [User Guide](#user-guide)
-+ [Conclusion](#conclusion)
 + [References](#references)
 
 ## Introduction
@@ -55,15 +52,15 @@ Your project will be graded using the following rubric.
 
 ### Python
 
-Python is a simple yet powerful programming language. It offers programmers the rare ability to focus mainly on the solution, and less on adhering to a strict syntax. This lightweight web application and it's handling of machine learning is attributed to Python's extensive libraries. I used [Python](https://www.python.org/) 3 and the flask framework for the server-side scripting. I used the @app.route decorator to map the URL to functions in my flask application. 
+Python is a simple yet powerful programming language. It offers programmers the rare ability to focus mainly on the solution, and less on adhering to a strict syntax. This lightweight web application and it's handling of machine learning is attributed to Python's extensive libraries. I used [Python](https://www.python.org/) 3 and the flask framework for the server-side scripting. I used the @app.route decorator to map the URL to functions in my flask application.
 
-## Implemention
+### Tensorflow
 
-## User Guide
-
-## Conclusion
+[TensorFlow](https://www.tensorflow.org/) is a powerful library for doing large-scale numerical computation. One of the tasks at which it excels is implementing and training deep neural networks. 
 
 ## References
+
+[TensorFlow](https://www.tensorflow.org/)
 
 [MNIST](http://yann.lecun.com/exdb/mnist/)
 
