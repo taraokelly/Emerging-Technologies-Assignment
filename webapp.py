@@ -74,6 +74,8 @@ def prepare(image):
     return arr.flatten().tolist()
 
 def predict(input):
+    # Returns the index with the largest value across axes of a tensor.
+    # So will return 0-9 since we have 10 classifications.
     return sess.run(tf.argmax(y_conv, 1), feed_dict={x: [input], keep_prob: 1.0})
 
 if __name__ == "__main__":
