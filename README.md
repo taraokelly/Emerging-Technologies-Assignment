@@ -7,6 +7,8 @@
 + [Introduction](#introduction)
 + [Project Specification](#project-specification)
 + [Technologies](#technologies)
++ [Implemention](#implemention)
++ [User Guide](#user-guide)
 + [References](#references)
 
 ## Introduction
@@ -56,7 +58,32 @@ Python is a simple yet powerful programming language. It offers programmers the 
 
 ### Tensorflow
 
-[TensorFlow](https://www.tensorflow.org/) is a powerful library for doing large-scale numerical computation. One of the tasks at which it excels is implementing and training deep neural networks. 
+[TensorFlow](https://www.tensorflow.org/) is a powerful library for doing large-scale numerical computation. It does so using data flow graphs. One of the tasks at which it excels is implementing and training deep neural networks. 
+
+## Implemention
+
+At first I considered using keras, a library that can use tensorflow as a backend, as modules resources supply a easy to follow example that builds, trains and validates a model. However, Tensorflow provide ample documentation and tutorials - one which boasted over 99% accuracy! First I created, trained, and tested the regressional model following the [MNIST for ML Beginners](https://www.tensorflow.org/get_started/mnist/beginners) tutorial. Subsequently, I restored the model and used this to make predictions. This model demonstrated from the tutorial was not that proficent so I then did the same examination and implementation of the [Deep MNIST for Experts](https://www.tensorflow.org/get_started/mnist/pros) tutorial. The tutorial demonstates a multilayer convolutional model. This rough work can be found in the [rough_work](https://github.com/taraokelly/Emerging-Technologies-Assignment/tree/master/rough_work) directory in the form of jupyter notebooks. To run these, follow the user guide and run the following command in the cmd:
+
+```
+jupyter notebook
+```
+
+## User Guide
+
+Download and install Anaconda [here](https://anaconda.org/anaconda/python) to download Python 3, and all the nessecary libraries.
+
+Clone this repository.
+
+```
+https://github.com/taraokelly/Emerging-Technologies-Assignment.git
+```
+
+__To run__:
+
+```
+py webapp.py
+```
+
 
 ## References
 
@@ -65,8 +92,6 @@ Python is a simple yet powerful programming language. It offers programmers the 
 [MNIST](http://yann.lecun.com/exdb/mnist/)
 
 [Gartner Hype Cycle](https://www.gartner.com/smarterwithgartner/top-trends-in-the-gartner-hype-cycle-for-emerging-technologies-2017/)
-
-[Bootstrap](http://getbootstrap.com/)
 
 [Python](https://www.python.org/)
 
