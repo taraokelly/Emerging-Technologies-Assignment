@@ -5,6 +5,7 @@ rough_work/*.data-00000-of-00001
 rough_work/*.meta
 rough_work/model/
 rough_work/checkpoint*
+env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
